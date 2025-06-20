@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title id="title">سيرة ذاتية - محمد أحمد</title>
+  <style>
+    .dark-mode {
+  background: #1a1a1a;
+  color: #eee;
+}
+.dark-mode .container {
+  background: #2a2a2a;
+  box-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+.dark-mode h1, .dark-mode h2 {
+  color: #66ccff;
+}
+.dark-mode button {
+  background: #444;
+  color: #fff;
+}
+.dark-mode button:hover {
+  background: #666;
+}
+.dark-mode .skills li,
+.dark-mode .projects li {
+  background: #3b3b3b;
+}
+.dark-mode .note {
+  background: #144d14;
+  color: #d4f4d4;
+  border-right: 5px solid #00cc00;
+}
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #e6f0ff, #ffffff);
+      margin: 0; padding: 0; color: #222;
+    }
+    .container {
+      max-width: 950px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      border-radius: 12px;
+    }
+    h1, h2 { color: #004080; }
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .header img {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border: 3px solid #004080;
+    }
+    .section {
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .skills li, .projects li {
+      background: #f0f7ff;
+      padding: 6px 12px;
+      margin: 5px 0;
+      border-radius: 5px;
+ 
+    }
+    button {
+      background: #004080;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin: 5px;
+    }
+    button:hover { background: #003366; }
+    .datetime { font-size: 14px; color: #555; margin-top: 10px; }
+    footer {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 3rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body onload="initPage()">
+
+<div class="container">
+  <div class="header">
+    <img src="your-photo.jpg" alt=" محمد أحمد">
+    <h1 id="welcome">مرحبًا بك في CV محمد أحمد 🌟</h1>
+    <p id="intro">طالب IT | عاشق للتكنولوجيا والتطوير | جنوب أفريقيا</p>
+    <button onclick="toggleLanguage()">🌐 English</button>
+  </div>
+
+  <div class="section contact scroll">
+    <h2 id="contact-title">التواصل</h2>
+    <p id="contact-text">للتواصل يُرجى المراسلة الخاصة في نهاية الصفحة 🙏</p>
+    <button onclick="contactMe()" id="contact-btn">تواصل الآن</button>
+  </div>
+
+  <div class="section about scroll">
+    <h2 id="about-title">نبذة عني</h2>
+    <p id="about-text">أنا محمد أحمد، أهوى البرمجة، تطوير الويب، وتحليل الأنظمة. أحب بناء الأفكار وتحويلها إلى شيء ملموس. أؤمن بأن كل تحدي هو فرصة جديدة للتطور والتميّز.</p>
+  </div>
+
+  <div class="section education scroll">
+    <h2 id="edu-title">المؤهلات التعليمية</h2>
+    <ul id="edu-list">
+      <li><strong>2025 - الآن:</strong> بكالوريوس تكنولوجيا معلومات - جنوب أفريقيا</li>
+      <li><strong>IGCSE + A-Level:</strong> شهادة منهج بريطاني متميزة <span class="note" ></li>
+      <li>دورة لغة إنجليزية متقدمة - جنوب أفريقيا 🇿🇦</li>
+      <li>دورة أساسيات الحاسوب - بتقدير ممتاز 💻</li>
+      <li>دورة أساسيات JAVA- بتقدير ممتاز 💻</li>
+    </ul>
+  </div>
+
+  <div class="section skills scroll">
+    <h2 id="skills-title">المهارات</h2>
+    <ul id="skills-list">
+      <li>HTML / CSS / JavaScript</li>
+      <li>Python / C++</li>
+      <li>تصميم واجهات UI/UX</li>
+      <li>Networking Basics</li>
+      <li>Git & GitHub</li>
+    </ul>
+  </div>
+
+  <div class="section projects scroll">
+    <h2 id="projects-title">مشاريعي</h2>
+    <ul id="projects-list">
+      <li>موقع شخصي باستخدام HTML/CSS</li>
+      <li>آلة حاسبة بـ Python</li>
+      <li>مشروع Cyber Security لتأمين البيانات</li>
+    </ul>
+  </div>
+
+  <div class="section scroll">
+    <h2 id="extras-title">خيارات إضافية</h2>
+    <button onclick="window.print()" id="print-btn">🖨️ اطبع السيرة الذاتية</button>
+    <div class="datetime" id="datetime"></div>
+    <button onclick="toggleDarkMode()">🌗 دارك مود</button>
+  </div>
+
+  <footer>
+    <span id="footer-text">جميع الحقوق محفوظة © محمد أحمد 2025</span>
+  </footer>
+</div>
+
+
+<script>
+  let isArabic = true;
+
+  function initPage() {
+    setInterval(() => {
+      const now = new Date();
+      document.getElementById("datetime").innerText = "📅 " + now.toLocaleString();
+    }, 1000);
+    scrollEffect();
+    window.addEventListener("scroll", scrollEffect);
+  }
+
+  function scrollEffect() {
+    document.querySelectorAll('.scroll').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  function contactMe() {
+    alert(isArabic
+      ? "شكرًا لتواصلك، سيتم الرد عليك على الخاص قريبًا إن شاء الله 🤝"
+      : "Thank you for reaching out! I will get back to you privately soon 🤝");
+  }
+
+  function toggleLanguage() {
+    isArabic = !isArabic;
+    document.documentElement.lang = isArabic ? "ar" : "en";
+    document.documentElement.dir = isArabic ? "rtl" : "ltr";
+
+    document.getElementById("title").innerText = isArabic ? "سيرة ذاتية - محمد أحمد" : "CV - Mohamed Ahmed";
+    document.getElementById("welcome").innerText = isArabic ? "مرحبًا بك في CV محمد أحمد 🌟" : "Welcome to Mohamed Ahmed's CV 🌟";
+    document.getElementById("intro").innerText = isArabic ? "طالب IT | عاشق للتكنولوجيا والتطوير | جنوب أفريقيا" : "IT Student | Passionate about Tech and Development | South Africa";
+    document.getElementById("contact-title").innerText = isArabic ? "التواصل" : "Contact";
+    document.getElementById("contact-text").innerText = isArabic ? "للتواصل يُرجى المراسلة الخاصة في نهاية الصفحة 🙏" : "Please reach out privately at the bottom of the page 🙏";
+    document.getElementById("contact-btn").innerText = isArabic ? "تواصل الآن" : "Contact Now";
+    document.getElementById("about-title").innerText = isArabic ? "نبذة عني" : "About Me";
+    document.getElementById("about-text").innerText = isArabic
+      ? "أنا محمد أحمد، أهوى البرمجة، تطوير الويب، وتحليل الأنظمة..."
+      : "I'm Mohamed Ahmed, passionate about programming, web development, and system analysis...";
+    document.getElementById("edu-title").innerText = isArabic ? "المؤهلات التعليمية" : "Education";
+    document.getElementById("honor").innerText = isArabic ? "🔰 تنويه ممتاز مع مرتبة الشرف" : "🔰 High Distinction with Honors";
+    document.getElementById("skills-title").innerText = isArabic ? "المهارات" : "Skills";
+    document.getElementById("projects-title").innerText = isArabic ? "مشاريعي" : "Projects";
+    document.getElementById("extras-title").innerText = isArabic ? "خيارات إضافية" : "Extras";
+    document.getElementById("print-btn").innerText = isArabic ? "🖨️ اطبع السيرة الذاتية" : "🖨️ Print CV";
+    document.getElementById("footer-text").innerText = isArabic ? "جميع الحقوق محفوظة © محمد أحمد 2025" : "All rights reserved © Mohamed Ahmed 2025";
+  }
+  function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+}
+</script>
+</body>
+</html>
